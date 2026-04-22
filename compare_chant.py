@@ -8,6 +8,7 @@ from difflib import SequenceMatcher
 import re
 from scipy.ndimage import uniform_filter1d         # Smooth pitch curve
 from scipy.signal import find_peaks, resample      # Peak detection, resamp
+from feedback_generator import generate_feedback
 
 # -------------------------
 # Load reference features
@@ -690,3 +691,19 @@ print("Rhythm Similarity:", round(tempo_similarity, 2), "%")
 print("Voice Similarity :", round(mfcc_similarity,  2), "%")
 print("Overall Score    :", round(overall, 2), "%")
 print("==============================")
+
+feedback_report = generate_feedback({
+    "text_similarity": text_similarity,
+    "pitch_combined": pitch_combined,
+    "tempo_similarity": tempo_similarity,
+    "mfcc_similarity": mfcc_similarity,
+    "overall": overall,
+    "zone_feedback": zone_feedback,
+    "shape_feedback": shape_feedback,
+    "accent_sim": accent_sim,
+    "slope_sim": slope_sim,
+})
+
+print("\n========== FEEDBACK REPORT ==========")
+print(json.dumps(feedback_report, indent=2, ensure_ascii=False))
+print("=====================================")
