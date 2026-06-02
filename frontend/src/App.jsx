@@ -507,7 +507,7 @@ export default function App() {
                   Analysing your chant...
                 </div>
                 <div style={{ fontSize: 12, color: "#9c9189" }}>
-                  Whisper transcription + pitch analysis — 15 to 30 seconds
+                  MMS acoustic embedding + pitch analysis — 15 to 30 seconds
                 </div>
               </div>
             )}
